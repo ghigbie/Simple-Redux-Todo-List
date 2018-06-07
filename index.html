@@ -30,6 +30,10 @@ const ADD_TODO    = 'ADD_TODO',
       ADD_GOAL    = 'ADD_GOAL',
       REMOVE_GOAL = 'REMOVE_GOAL';
 
+function generateId(){
+    return Math.random().toString(36).substring(2) + (new Date()).getTime().toString(36);
+}
+
 function addTodoAction(todo){
     return {
         type: ADD_TODO,
@@ -179,6 +183,18 @@ store.dispatch(addGoalAction({
 
 store.dispatch(removeGoalAction(1));
 store.dispatch(removeGoalAction(2));
+
+function addTodo(){
+    const input = document.getElementById('todo');
+    const name = input.value;
+    input.value = '';
+    
+    store.dispatch(addTodoAction({
+        name,
+        complete: false,
+        id: generateId()
+    }));
+}
 
     </script>
 </body>
