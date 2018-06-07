@@ -18,12 +18,6 @@
     </diV>
     <script type="text/javascript">
 
-const todoButton = document.getElementById('todoButton'),
-      goalButton = document.getElementById('goalBtn');
-     
-      todoButton.addEventListener('click', addTodo);
-      goalButton.addEventListener('click', addGoal);
-
 const ADD_TODO    = 'ADD_TODO',
       REMOVE_TODO = 'REMOVE_TODO',
       TOGGLE_TODO = 'TOGGLE_TODO',
@@ -207,6 +201,9 @@ function addGoal(){
     }));
 }
 
+    document.getElementById('todoBtn').addEventListener('click', addTodo);
+    document.getElementById('goalBtn').addEventListener('click', addGoal);
+    
     </script>
 </body>
 </html>
