@@ -21,8 +21,8 @@
 const todoButton = document.getElementById('todoButton'),
       goalButton = document.getElementById('goalBtn');
      
-    //   todoButton.addEventListener('click', addTodo);
-    //   goalButton.addEventListener('click', addGoal);
+      todoButton.addEventListener('click', addTodo);
+      goalButton.addEventListener('click', addGoal);
 
 const ADD_TODO    = 'ADD_TODO',
       REMOVE_TODO = 'REMOVE_TODO',
@@ -192,6 +192,17 @@ function addTodo(){
     store.dispatch(addTodoAction({
         name,
         complete: false,
+        id: generateId()
+    }));
+}
+
+function addGoal(){
+    const input = document.getElementById('goal');
+    const name = input.value;
+    input.value = '';
+    
+    store.dispatch(addGoalAction({
+        name,
         id: generateId()
     }));
 }
