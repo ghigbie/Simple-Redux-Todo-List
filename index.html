@@ -17,10 +17,15 @@
         <ul id="goals"></ul>
     </diV>
     <script type="text/javascript">
-
-function generateId(){
-    return Math.random().toString(36).substring(2) + (new Date()).getTime().toString(36);
-}
+    
+    //DOM elements
+    const todosList = document.getElementById('todos');
+    const goalsLsit = document.getElementById('goals');
+    
+    //random number funtion
+    function generateId(){
+        return Math.random().toString(36).substring(2) + (new Date()).getTime().toString(36);
+    }
 
  // Library Code
     function createStore (reducer) {
@@ -117,6 +122,8 @@ function generateId(){
     store.subscribe(() => {
       console.log('The new state is: ', store.getState());
       const { goals, todos } = store.getState();
+      todosList.innerHTML = '';
+      goalsList.innerHTML = '';
       todos.forEach(addTodoToDOM);
       goals.forEach(addGoalToDOM);
     });
@@ -205,7 +212,7 @@ function addTodoToDOM(todo){
     const text = document.createTextNode(todo.name);
     node.appendChild(text);
     
-    document.getElementById('todos').appendChild(node);
+    todosList.appendChild(node);
 }
 
 function addGoalToDOM(goal){
@@ -213,7 +220,7 @@ function addGoalToDOM(goal){
     const text = document.createTextNode(goal.name);
     node.appendChild(text);
     
-    document.getElementById('goals').appendChild(node);
+    goalsList.appendChild(node);
 }
     </script>
 </body>
