@@ -126,57 +126,57 @@ store.subscribe(() => {
     console.log('The store was subscribed');
 });
 
-store.dispatch(addTodoAction({
-    id: 0,
-    name: 'Walk the doggie',
-    complete: false
-}));
+// store.dispatch(addTodoAction({
+//     id: 0,
+//     name: 'Walk the doggie',
+//     complete: false
+// }));
 
 
-store.dispatch(addTodoAction({
-    id: 1,
-    name: 'Wash the dishes',
-    complete: false
-}));
+// store.dispatch(addTodoAction({
+//     id: 1,
+//     name: 'Wash the dishes',
+//     complete: false
+// }));
 
-store.dispatch(addTodoAction({
-    id: 2,
-    name: 'Hunt rabbits',
-    complete: true
-}));
+// store.dispatch(addTodoAction({
+//     id: 2,
+//     name: 'Hunt rabbits',
+//     complete: true
+// }));
 
-store.dispatch(removeTodoAction(0));
-store.dispatch(removeTodoAction(1));
-store.dispatch(toggleTodoAction(2));
+// store.dispatch(removeTodoAction(0));
+// store.dispatch(removeTodoAction(1));
+// store.dispatch(toggleTodoAction(2));
 
-store.dispatch(addTodoAction({
-    id: 3,
-    name: 'Get the number',
-    complete: false
-}));
+// store.dispatch(addTodoAction({
+//     id: 3,
+//     name: 'Get the number',
+//     complete: false
+// }));
 
-store.dispatch(addGoalAction({
-    id: 0,
-    name: 'Learn Redux'
-}));
+// store.dispatch(addGoalAction({
+//     id: 0,
+//     name: 'Learn Redux'
+// }));
 
-store.dispatch(addGoalAction({
-    id: 1,
-    name: 'Master React'
-}));
+// store.dispatch(addGoalAction({
+//     id: 1,
+//     name: 'Master React'
+// }));
 
-store.dispatch(addGoalAction({
-    id: 2,
-    name: 'Become a Viking!'
-}));
+// store.dispatch(addGoalAction({
+//     id: 2,
+//     name: 'Become a Viking!'
+// }));
 
-store.dispatch(addGoalAction({
-    id: 3,
-    name: 'Learn cow tipping'
-}));
+// store.dispatch(addGoalAction({
+//     id: 3,
+//     name: 'Learn cow tipping'
+// }));
 
-store.dispatch(removeGoalAction(1));
-store.dispatch(removeGoalAction(2));
+// store.dispatch(removeGoalAction(1));
+// store.dispatch(removeGoalAction(2));
 
 function addTodo(){
     const input = document.getElementById('todo');
@@ -204,6 +204,13 @@ function addGoal(){
     document.getElementById('todoBtn').addEventListener('click', addTodo);
     document.getElementById('goalBtn').addEventListener('click', addGoal);
     
+function addTodoToDom (todo){
+    const node = document.createElement('li');
+    const text = document.createTextNode(todo.name);
+    node.appendChild(text);
+    
+    document.getElementById('todos').appendChild(node);
+}
     </script>
 </body>
 </html>
