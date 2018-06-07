@@ -17,7 +17,13 @@
         <ul id="goals"></ul>
     </diV>
     <script type="text/javascript">
-    
+
+const todoButton = document.getElementById('todoButton'),
+      goalButton = document.getElementById('goalBtn');
+     
+    //   todoButton.addEventListener('click', addTodo);
+    //   goalButton.addEventListener('click', addGoal);
+
 const ADD_TODO    = 'ADD_TODO',
       REMOVE_TODO = 'REMOVE_TODO',
       TOGGLE_TODO = 'TOGGLE_TODO',
@@ -113,6 +119,7 @@ function app (state = {}, action){
 }
 
 const store = createStore(app);
+console.log(store);
 
 store.subscribe(() => {
     console.log('The new state is: ', store);
