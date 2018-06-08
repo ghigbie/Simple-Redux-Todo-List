@@ -88,13 +88,12 @@
           return state;
       }
     }
-    function app (state = {}, action) {
-      return {
-        todos: todos(state.todos, action),
-        goals: goals(state.goals, action),
-      };
-    }
-    const store = createStore(app);
+    
+    const store = Redux.createStore(Redux.combineReducers({
+        todos,
+        goals
+    }));
+    
     store.subscribe(() => {
       console.log('The new state is: ', store.getState());
       const { goals, todos } = store.getState();
