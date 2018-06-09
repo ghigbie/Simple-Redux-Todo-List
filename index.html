@@ -84,7 +84,14 @@
           action.type === ADD_TODO &&
           action.todo.name.toLowerCase().includes('bitcoin')
         ){
-          return alert('Nope! That\'s abad idea!');
+          return alert('Nope! That\'s a bad idea!');
+        }
+        
+      if(
+          action.type === ADD_GOAL &&
+          action.gaol.name.toLowerCase().includes('bitcoin')
+        ){
+          return alert('Nope! That\'s a bad idea!');
         }
     }
     
