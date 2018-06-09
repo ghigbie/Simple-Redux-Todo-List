@@ -127,7 +127,7 @@
         const name = input.value;
         input.value = '';
         
-        checkAndDispatch(addTodoAction({
+        checkAndDispatch(store, addTodoAction({
             name,
             complete: false,
             id: generateId()
@@ -139,7 +139,7 @@
         const name = input.value;
         input.value = '';
         
-        checkAndDispatch(addGoalAction({
+        checkAndDispatch(store, addGoalAction({
             name,
             id: generateId()
         }));
@@ -152,14 +152,14 @@
         const node = document.createElement('li');
         const text = document.createTextNode(todo.name);
         const removeBtn = createRemoveButton(() => {
-            checkAndDispatch(removeTodoAction(todo.id));
+            checkAndDispatch(store, removeTodoAction(todo.id));
         });
         
         node.appendChild(text);
         node.appendChild(removeBtn);
         node.style.textDecoration = todo.complete ? 'line-through' : 'none';
         node.addEventListener('click', () => {
-           checkAndDispatch(toggleTodoAction(todo.id)); 
+           checkAndDispatch(store, toggleTodoAction(todo.id)); 
         });
         todosList.appendChild(node);
     }
@@ -168,7 +168,7 @@
         const node = document.createElement('li');
         const text = document.createTextNode(goal.name);
         const removeBtn = createRemoveButton(() => {
-            checkAndDispatch(removeGoalAction(goal.id));
+            checkAndDispatch(store, removeGoalAction(goal.id));
         });
         node.appendChild(text);
         node.appendChild(removeBtn);
