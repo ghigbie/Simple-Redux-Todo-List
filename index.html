@@ -89,10 +89,12 @@
         
       if(
           action.type === ADD_GOAL &&
-          action.gaol.name.toLowerCase().includes('bitcoin')
+          action.goal.name.toLowerCase().includes('bitcoin')
         ){
           return alert('Nope! That\'s a bad idea!');
         }
+      
+      return store.dispatch(action);
     }
     
     function goals (state = [], action) {
