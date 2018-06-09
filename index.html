@@ -133,7 +133,7 @@
     const store = Redux.createStore(Redux.combineReducers({
         todos,
         goals
-    }));
+    }), Redux.applyMiddleware(checker));
     
     store.subscribe(() => {
       console.log('The new state is: ', store.getState());
