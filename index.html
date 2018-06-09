@@ -78,6 +78,16 @@
           return state;
       }
     }
+    
+    function checkAndDispatch (store, action) {
+      if(
+          action.type === ADD_TODO &&
+          action.todo.name.toLowerCase().includes('bitcoin')
+        ){
+          return alert('Nope! That\'s abad idea!');
+        }
+    }
+    
     function goals (state = [], action) {
       switch(action.type) {
         case ADD_GOAL :
@@ -163,5 +173,5 @@
         return removeBtn;
     }
     </script>
-</body>
+</body> 
 </html>
