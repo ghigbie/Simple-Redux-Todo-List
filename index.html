@@ -123,7 +123,10 @@
     const logger = (store) => (next) => (action) => {
       console.group(action.type);
         console.log('The action: ', action);
-      console.group() ; 
+        const result = next(action);
+        console.log('The new state: ', store.getState());
+      console.group();
+      return result;
     }
     
     const store = Redux.createStore(Redux.combineReducers({
