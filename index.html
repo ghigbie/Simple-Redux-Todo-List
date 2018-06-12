@@ -223,7 +223,6 @@
         e.preventDefault();
         const name = this.input.value;
         this.input.value = '';
-        
         this.props.store.dispatch(addTodoAction({
           name,
           complete: false,
@@ -239,7 +238,7 @@
                     placeholder="Add Todo"
                     ref={(input) => this.input = input} />
              <button onClick={this.addItem}>Add Todo</button>
-             <List />
+             <List store={this.props.store} />
           </div>
         );
       }
@@ -250,7 +249,6 @@
         e.preventDefault();
         const name = this.input.value;
         this.input.value = '';
-        
         this.props.store.dispatch(addGoalAction({
           name,
           id: generateId()
@@ -265,18 +263,25 @@
                    placeholder="Add Gaol"
                    ref={(input) => this.input = input} />
             <button onClick={this.addItem}>Add Goal</button>
-            <List />
+            <List store={this.props.store} />
           </div>
         );
       }
     }
     
     class App extends React.Component{
+      componentDidMount(){
+        const { store } = this.props;
+        store.subscribe(() => )
+      }
+      
       render(){
+        const { store } = this.props;
+        const { todos, gaols } = store.getState();
         return(
           <div>
-            <Todos store={this.props.store}/>
-            <Goals store={this.props.store}/>
+            <Todos todos={todos} store={this.props.store}/>
+            <Goals goals={goals} store={this.props.store}/>
           </div>
         );
       }
