@@ -120,11 +120,6 @@
         todos,
         goals
     }), Redux.applyMiddleware(checker, logger));
-    
-    store.subscribe(() => {
-      console.log('The new state is: ', store.getState());
-      const { goals, todos } = store.getState();
-    });
 
     </script>
     
