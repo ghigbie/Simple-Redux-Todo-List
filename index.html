@@ -246,7 +246,8 @@
                     placeholder="Add Todo"
                     ref={(input) => this.input = input} />
              <button onClick={this.addItem}>Add Todo</button>
-             <List items={this.props.items} />
+             <List items={this.props.items} 
+                   remove={this.removeItem}/>
           </div>
         );
       }
@@ -263,6 +264,10 @@
         }))
       }
       
+      removeItem = (goal) => {
+        this.props.store.dispatch(removeGoalAction(goal.id));
+      }
+      
       render(){
         return(
           <div>
@@ -271,7 +276,8 @@
                    placeholder="Add Gaol"
                    ref={(input) => this.input = input} />
             <button onClick={this.addItem}>Add Goal</button>
-            <List items={this.props.items} />
+            <List items={this.props.items} 
+                  remove={this.removeItem}/>
           </div>
         );
       }
