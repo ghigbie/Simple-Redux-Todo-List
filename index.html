@@ -277,11 +277,11 @@
       
       render(){
         const { store } = this.props;
-        const { todos, gaols } = store.getState();
+        const { todos, goals } = store.getState();
         return(
           <div>
-            <Todos todos={todos} store={this.props.store}/>
-            <Goals goals={goals} store={this.props.store}/>
+            <Todos items={todos} store={this.props.store}/>
+            <Goals items={goals} store={this.props.store}/>
           </div>
         );
       }
