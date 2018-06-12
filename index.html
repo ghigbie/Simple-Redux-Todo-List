@@ -213,7 +213,7 @@
     function List (props){
       return(
         <ul>
-          <li>List</li>
+          {props.items.map((item) => (<li>{item}</li>))}
         </ul>
       );
     }
@@ -238,7 +238,7 @@
                     placeholder="Add Todo"
                     ref={(input) => this.input = input} />
              <button onClick={this.addItem}>Add Todo</button>
-             <List store={this.props.store} />
+             <List items={this.props.items} />
           </div>
         );
       }
@@ -263,7 +263,7 @@
                    placeholder="Add Gaol"
                    ref={(input) => this.input = input} />
             <button onClick={this.addItem}>Add Goal</button>
-            <List store={this.props.store} />
+            <List items={this.props.items} />
           </div>
         );
       }
@@ -272,7 +272,7 @@
     class App extends React.Component{
       componentDidMount(){
         const { store } = this.props;
-        store.subscribe(() => )
+        store.subscribe(() => this.forceUpdate());
       }
       
       render(){
