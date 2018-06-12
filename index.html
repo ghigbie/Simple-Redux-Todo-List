@@ -216,6 +216,7 @@
           {props.items.map((item) => (
             <li key={item.id}>
               <span>{item.name}</span>
+              <button onClick={() => removeItem(item)}>X</button>
             </li>))}
         </ul>
       );
