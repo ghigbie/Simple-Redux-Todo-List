@@ -144,6 +144,8 @@
       );
     }
     
+    const alertMessage = 'An error occured. Please try again at a much, much later time.';
+    
     class Todos extends React.Component{
       addItem = (e) => {
         e.preventDefault();
@@ -161,12 +163,17 @@
         return API.deleteTodo(todo.id)
           .catch(() => {
             this.props.store.dispatch(addTodoAction(todo));
-            alert('An error occured. Please try again at a much, much later time.')
+            alert(alertMessage);
           });
       }
       
       toggleItem = (todo) => {
         this.props.store.dispatch(toggleTodoAction(todo.id));
+        return API.saveTodoToggle(todo.id)
+          .catch(() => {
+            this.props.store.dispatch(toggleTodoAction(todo.id));
+            alert(alertMessage);
+          });
       }
       
       render(){
@@ -198,6 +205,11 @@
       
       removeItem = (goal) => {
         this.props.store.dispatch(removeGoalAction(goal.id));
+        return API.deleteTodo(goal.id)
+          .catch(() => {
+            this.props.store.dispatch(removeGoalAction(goal.id));
+            alert(alertMessage);   
+          });
       }
       
       render(){
