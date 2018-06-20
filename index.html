@@ -71,7 +71,8 @@
           return state.map((todo) => todo.id !== action.id ? todo :
             Object.assign({}, todo, { complete: !todo.complete }));
         case RECEIVE_DATA:
-          return todos;
+          console.log(action.todos);
+          return action.todos;
         default :
           return state;
       }
@@ -84,28 +85,11 @@
         case REMOVE_GOAL:
           return state.filter((goal) => goal.id !== action.id);
         case RECEIVE_DATA:
-          return todos;
+          console.log(action.goals);
+          return action.goals;
         default :
           return state;
       }
-    }
-    
-    function checkAndDispatch (store, action) {
-      if(
-          action.type === ADD_TODO &&
-          action.todo.name.toLowerCase().includes('bitcoin')
-        ){
-          return alert('Nope! That\'s a bad idea!');
-        }
-        
-      if(
-          action.type === ADD_GOAL &&
-          action.goal.name.toLowerCase().includes('bitcoin')
-        ){
-          return alert('Nope! That\'s a bad idea!');
-        }
-      
-      return store.dispatch(action);
     }
     
     const checker = (store) => (next) => (action) => {
@@ -220,6 +204,15 @@
       componentDidMount(){
         const { store } = this.props;
         store.subscribe(() => this.forceUpdate());
+        
+        Promise.all([
+          API.fetchTodos(),
+          API.fetchGoals()
+        ]).then(([ todos, goals ]) => {
+          store.dispatch(receiveDataAction(todos, goals))
+        })
+        
+        store.subscribe(() => this.forceUpdate());
       }
       
       render(){
@@ -227,8 +220,8 @@
         const { todos, goals } = store.getState();
         return(
           <div>
-            <Todos items={todos} store={this.props.store}/>
-            <Goals items={goals} store={this.props.store}/>
+            <Todos items={todos} store={store}/>
+            <Goals items={goals} store={store}/>
           </div>
         );
       }
